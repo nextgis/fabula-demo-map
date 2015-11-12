@@ -33,7 +33,7 @@
                     var attr_lookup = [
                         {'key': 'number', 'value': 'Номер уголовного дела'},
                         {'key': 'stzch', 'value': 'Квалификация преступления'},
-                        {'key': 'kem_text', 'value': 'Орган, выявивший преступлениея'},
+                        {'key': 'kem_text', 'value': 'Орган, выявивший преступление'},
                         {'key': 'okato', 'value': 'ОКАТО органа, поставившего на учёт дело'},
                         {'key': 'oktmo', 'value': 'ОКТМО органа, поставившего на учёт дело'},
                         {'key': 'dt_sov', 'value': 'Дата совершения преступления'},
@@ -55,7 +55,7 @@
                         var key = attr_lookup[idx]['key'];
                         var value = attr_lookup[idx]['value'];
                         if (feature.properties[key] !== '') {
-                            content += '<tr><th scope="row">' + value + '</th><td>' + feature.properties[key] + '</td></tr>'
+                            content += '<tr><th scope="row">' + value + '</th><td>' + feature.properties[key] + '</td></tr>';
                         }
                     }
 
