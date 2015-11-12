@@ -29,26 +29,37 @@
         
             var fabula = new L.geoJson(json_crimedataset, {
                 onEachFeature: function(feature, layer) {
-                    var content = '<table>\
-                        <tr><th scope="row">Номер уголовного дела</th><td>' + feature.properties['number'] + '</td></tr>\
-                        <tr><th scope="row">Квалификация преступления</th><td>' + feature.properties['stzch'] + '</td></tr>\
-                        <tr><th scope="row">Орган, выявивший преступление</th><td>' + feature.properties['kem_text'] + '</td></tr>\
-                        <tr><th scope="row">ОКАТО органа</th><td>' + feature.properties['okato'] + '</td></tr>\
-                        <tr><th scope="row">ОКТМО органа</th><td>' + feature.properties['oktmo'] + '</td></tr>\
-                        <tr><th scope="row">Дата совершения преступления</th><td>' + feature.properties['dt_sov'] + '</td></tr>\
-                        <tr><th scope="row">Статус неоконченного преступления</th><td>' + feature.properties['prig_pok'] + '</td></tr>\
-                        <tr><th scope="row">Направленность преступления</th><td>' + feature.properties['napr'] + '</td></tr>\
-                        <tr><th scope="row">Место совершения преступления</th><td>' + feature.properties['mesto'] + '</td></tr>\
-                        <tr><th scope="row">Форма хозяйствующего субъекта</th><td>' + feature.properties['forma_xoz'] + '</td></tr>\
-                        <tr><th scope="row">Признак совершения преступления в общественном месте</th><td>' + feature.properties['ob_mesto'] + '</td></tr>\
-                        <tr><th scope="row">Предмет преступного посягательства 1</th><td>' + feature.properties['predmet1'] + '</td></tr>\
-                        <tr><th scope="row">Предмет преступного посягательства 2</th><td>' + feature.properties['predmet2'] + '</td></tr>\
-                        <tr><th scope="row">Предмет преступного посягательства 3</th><td>' + feature.properties['predmet3'] + '</td></tr>\
-                        <tr><th scope="row">Оружие 1</th><td>' + feature.properties['oruj1'] + '</td></tr>\
-                        <tr><th scope="row">Оружие 2</th><td>' + feature.properties['oruj2'] + '</td></tr>\
-                        <tr><th scope="row">Оружие 3</th><td>' + feature.properties['oruj3'] + '</td></tr>\
-                        <tr><th scope="row">Количество потерпевших</th><td>' + feature.properties['kol_poterp'] + '</td></tr>\
-                    </table>';
+                    var content = '';
+                    var attr_lookup = [
+                        {'key': 'number', 'value': 'Номер уголовного дела'},
+                        {'key': 'stzch', 'value': 'Квалификация преступления'},
+                        {'key': 'kem_text', 'value': 'Орган, выявивший преступлениея'},
+                        {'key': 'okato', 'value': 'ОКАТО органа, поставившего на учёт дело'},
+                        {'key': 'oktmo', 'value': 'ОКТМО органа, поставившего на учёт дело'},
+                        {'key': 'dt_sov', 'value': 'Дата совершения преступления'},
+                        {'key': 'prig_pok', 'value': 'Статус неоконченного преступления'},
+                        {'key': 'napr', 'value': 'Направленность преступления'},
+                        {'key': 'mesto', 'value': 'Место совершения преступления'},
+                        {'key': 'forma_xoz', 'value': 'Форма хозяйствующего субъекта'},
+                        {'key': 'ob_mesto', 'value': 'Признак совершения преступления в общественном месте'},
+                        {'key': 'predmet1', 'value': 'Предмет преступного посягательства 1'},
+                        {'key': 'predmet2', 'value': 'Предмет преступного посягательства 2'},
+                        {'key': 'predmet3', 'value': 'Предмет преступного посягательства 3'},
+                        {'key': 'oruj1', 'value': 'Оружие 1'},
+                        {'key': 'oruj2', 'value': 'Оружие 2'},
+                        {'key': 'oruj3', 'value': 'Оружие 3'},
+                        {'key': 'kol_poterp', 'value': 'Количество потерпевших'}
+                    ];
+                    
+                    for (var idx=0; idx < attr_lookup.length; idx += 1) {
+                        var key = attr_lookup[idx]['key'];
+                        var value = attr_lookup[idx]['value'];
+                        if (feature.properties[key] !== '') {
+                            content += '<tr><th scope="row">' + value + '</th><td>' + feature.properties[key] + '</td></tr>'
+                        }
+                    }
+
+                    content = '<table>' + content + '</table>';
                     layer.bindPopup(content);
                 }
             });
