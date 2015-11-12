@@ -1,0 +1,31 @@
+<OGRVRTDataSource>
+    <OGRVRTLayer name="result">
+        <LayerSRS>WGS84</LayerSRS>
+        <GeometryType>wkbPoint</GeometryType>
+        <GeometryField encoding="PointFromColumns" x="lon" y="lat"/>
+        <Field name="number" src="number" />
+        <Field name="stzch" src="stzch" />
+        <Field name="kem_text" src="kem_text" />
+        <Field name="okato" src="okato" />
+        <Field name="oktmo" src="oktmo" />
+        <Field name="dt_sov" src="dt_sov" />
+        <Field name="prig_pok" src="prig_pok" />
+        <Field name="napr" src="napr" />
+        <Field name="mesto" src="mesto" />
+        <Field name="forma_xoz" src="forma_xoz" />
+        <Field name="ob_mesto" src="ob_mesto" />
+        <Field name="predmet1" src="predmet1" />
+        <Field name="predmet2" src="predmet2" />
+        <Field name="predmet3" src="predmet3" />
+        <Field name="oruj1" src="oruj1" />
+        <Field name="oruj2" src="oruj2" />
+        <Field name="oruj3" src="oruj3" />
+        <Field name="kol_poterp" src="kol_poterp" />
+        <SrcDataSource>result.csv</SrcDataSource>
+
+        <!-- 
+            Don't forget to change 'street' column name in original csv file to e.g. '_street'.
+        -->
+        <SrcSQL>SELECT * FROM result WHERE level IN ('street', 'housenumber')</SrcSQL>
+    </OGRVRTLayer>
+</OGRVRTDataSource>
