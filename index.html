@@ -27,33 +27,28 @@
                 maxZoom: 18
             }).addTo(map);
         
-            function pop_crimedataset(feature, layer) {
-                var popupContent = '<table>\
-                                        <tr><th scope="row">Номер уголовного дела</th><td>' + String(feature.properties['number']) + '</td></tr>\
-                                        <tr><th scope="row">Квалификация преступления</th><td>' + String(feature.properties['stzch']) + '</td></tr>\
-                                        <tr><th scope="row">Орган, выявивший преступление</th><td>' + String(feature.properties['kem_text']) + '</td></tr>\
-                                        <tr><th scope="row">ОКАТО органа</th><td>' + String(feature.properties['okato']) + '</td></tr>\
-                                        <tr><th scope="row">ОКТМО органа</th><td>' + String(feature.properties['oktmo']) + '</td></tr>\
-                                        <tr><th scope="row">Дата совершения преступления</th><td>' + String(feature.properties['dt_sov']) + '</td></tr>\
-                                        <tr><th scope="row">Статус неоконченного преступления</th><td>' + String(feature.properties['prig_pok']) + '</td></tr>\
-                                        <tr><th scope="row">Направленность преступления</th><td>' + String(feature.properties['napr']) + '</td></tr>\
-                                        <tr><th scope="row">Место совершения преступления</th><td>' + String(feature.properties['mesto']) + '</td></tr>\
-                                        <tr><th scope="row">Форма хозяйствующего субъекта</th><td>' + String(feature.properties['forma_xoz']) + '</td></tr>\
-                                        <tr><th scope="row">Признак совершения преступления в общественном месте</th><td>' + String(feature.properties['ob_mesto']) + '</td></tr>\
-                                        <tr><th scope="row">Предмет преступного посягательства 1</th><td>' + String(feature.properties['predmet1']) + '</td></tr>\
-                                        <tr><th scope="row">Предмет преступного посягательства 2</th><td>' + String(feature.properties['predmet2']) + '</td></tr>\
-                                        <tr><th scope="row">Предмет преступного посягательства 3</th><td>' + String(feature.properties['predmet3']) + '</td></tr>\
-                                        <tr><th scope="row">Оружие 1</th><td>' + String(feature.properties['oruj1']) + '</td></tr>\
-                                        <tr><th scope="row">Оружие 2</th><td>' + String(feature.properties['oruj2']) + '</td></tr>\
-                                        <tr><th scope="row">Оружие 3</th><td>' + String(feature.properties['oruj3']) + '</td></tr>\
-                                        <tr><th scope="row">Количество потерпевших</th><td>' + String(feature.properties['kol_poterp']) + '</td></tr>\
-                                        </table>';
-                layer.bindPopup(popupContent);
-            }
-
             var fabula = new L.geoJson(json_crimedataset, {
                 onEachFeature: function(feature, layer) {
-                    var content = "<table><tr><th scope='row'>Фабула</th><td>" + feature.properties['text'] + "</td></tr></table>";
+                    var content = '<table>\
+                        <tr><th scope="row">Номер уголовного дела</th><td>' + feature.properties['number'] + '</td></tr>\
+                        <tr><th scope="row">Квалификация преступления</th><td>' + feature.properties['stzch'] + '</td></tr>\
+                        <tr><th scope="row">Орган, выявивший преступление</th><td>' + feature.properties['kem_text'] + '</td></tr>\
+                        <tr><th scope="row">ОКАТО органа</th><td>' + feature.properties['okato'] + '</td></tr>\
+                        <tr><th scope="row">ОКТМО органа</th><td>' + feature.properties['oktmo'] + '</td></tr>\
+                        <tr><th scope="row">Дата совершения преступления</th><td>' + feature.properties['dt_sov'] + '</td></tr>\
+                        <tr><th scope="row">Статус неоконченного преступления</th><td>' + feature.properties['prig_pok'] + '</td></tr>\
+                        <tr><th scope="row">Направленность преступления</th><td>' + feature.properties['napr'] + '</td></tr>\
+                        <tr><th scope="row">Место совершения преступления</th><td>' + feature.properties['mesto'] + '</td></tr>\
+                        <tr><th scope="row">Форма хозяйствующего субъекта</th><td>' + feature.properties['forma_xoz'] + '</td></tr>\
+                        <tr><th scope="row">Признак совершения преступления в общественном месте</th><td>' + feature.properties['ob_mesto'] + '</td></tr>\
+                        <tr><th scope="row">Предмет преступного посягательства 1</th><td>' + feature.properties['predmet1'] + '</td></tr>\
+                        <tr><th scope="row">Предмет преступного посягательства 2</th><td>' + feature.properties['predmet2'] + '</td></tr>\
+                        <tr><th scope="row">Предмет преступного посягательства 3</th><td>' + feature.properties['predmet3'] + '</td></tr>\
+                        <tr><th scope="row">Оружие 1</th><td>' + feature.properties['oruj1'] + '</td></tr>\
+                        <tr><th scope="row">Оружие 2</th><td>' + feature.properties['oruj2'] + '</td></tr>\
+                        <tr><th scope="row">Оружие 3</th><td>' + feature.properties['oruj3'] + '</td></tr>\
+                        <tr><th scope="row">Количество потерпевших</th><td>' + feature.properties['kol_poterp'] + '</td></tr>\
+                    </table>';
                     layer.bindPopup(content);
                 }
             });
